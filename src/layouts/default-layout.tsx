@@ -5,7 +5,7 @@ export function DefaultLayout() {
   return (
     <div>
       <Header />
-      <main className="bg-slate-950 h-screen text-slate-300">
+      <main className="bg-slate-950 h-full text-slate-300">
         <Outlet />
       </main>
     </div>

@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json", 
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -21,8 +21,11 @@
     "enabled": true,
     "rules": {
       "complexity": { "noForEach": "off" },
-      "style": { "noNonNullAssertion": "off"},
-      "a11y": {"useButtonType":"off"},
+      "style": {
+        "noNonNullAssertion": "off",
+        "useConst": "off"
+      },
+      "a11y": { "useButtonType": "off" },
       "recommended": true
     }
   },
