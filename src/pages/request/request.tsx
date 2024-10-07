@@ -4,7 +4,7 @@ import RequestsTable from './components/requests-table'
 export function Request() {
   return (
     <div className="p-4 text-center min-h-screen">
-      <Tabs>
+      <Tabs className="mt-4">
         <Tab title="Novas">
           <Card classNames={{ base: '!bg-inherit' }}>
             <CardBody>
