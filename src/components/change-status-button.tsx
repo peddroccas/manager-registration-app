@@ -15,10 +15,24 @@ export function ChangeStatusButton({ id, status, refetch }: ActionButtonProps) {
 
   if (status === 'ACCEPTED') {
     return (
-      <Button className="cursor-auto bg-inherit text-slate-300">
+      <Button
+        className=" bg-inherit text-slate-300"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Check
           className={`text-green-500 absolute transition-all duration-300 ${
             isHovered ? 'opacity-0 scale-75' : 'opacity-100 scale-100'
+          }`}
+          size={24}
+        />
+        <PaperPlaneTilt
+          onClick={async () => {
+            await updateStatus(id, 'SENT')
+            refetch()
+          }}
+          className={`p-px  rounded transition-all duration-300 ${
+            isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
           }`}
           size={24}
         />
