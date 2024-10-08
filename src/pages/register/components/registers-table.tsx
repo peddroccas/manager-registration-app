@@ -8,19 +8,19 @@ import {
   Snippet,
 } from '@nextui-org/react'
 import { useQuery } from '@tanstack/react-query'
-import { getRequests } from '../../../http/get-requests'
+import { getRegisters } from '../../../http/get-registers'
 import type { Status } from '../../../types'
 
 import { ChangeStatusButton } from '../../../components/change-status-button'
 
-interface RequestTableProps {
+interface RegisterTableProps {
   status?: Status
 }
 
-export function RequestsTable({ status }: RequestTableProps) {
+export function RegistersTable({ status }: RegisterTableProps) {
   const { data, refetch } = useQuery({
-    queryKey: ['requests'],
-    queryFn: async () => await getRequests(status),
+    queryKey: ['registers'],
+    queryFn: async () => await getRegisters(status),
   })
 
   if (!data) {
@@ -35,14 +35,14 @@ export function RequestsTable({ status }: RequestTableProps) {
             className="text-slate-300 overflow-hidden max-w-xs"
             classNames={{ pre: 'truncate' }}
           >
-            {data.map(request => `${request.email}`).join(';')}
+            {data.map(register => `${register.email}`).join(';')}
           </Snippet>
         </div>
       ) : (
         <></>
       )}
       <Table
-        aria-label="requests"
+        aria-label="registers"
         classNames={{
           wrapper: 'bg-slate-900',
           th: 'bg-slate-300 text-slate-950',
@@ -58,18 +58,18 @@ export function RequestsTable({ status }: RequestTableProps) {
           <TableColumn align="center">STATUS</TableColumn>
         </TableHeader>
         <TableBody>
-          {data.map(request => {
+          {data.map(register => {
             return (
-              <TableRow key={request.id}>
-                <TableCell>{request.email}</TableCell>
-                <TableCell>{request.abbreviation}</TableCell>
-                <TableCell>{request.body}</TableCell>
+              <TableRow key={register.id}>
+                <TableCell>{register.email}</TableCell>
+                <TableCell>{register.abbreviation}</TableCell>
+                <TableCell>{register.body}</TableCell>
                 <TableCell>
                   <div className="flex justify-center items-center">
                     <ChangeStatusButton
-                      id={request.id}
-                      status={request.status}
-                      type="request"
+                      id={register.id}
+                      status={register.status}
+                      type="register"
                       refetch={() => refetch()}
                     />
                   </div>

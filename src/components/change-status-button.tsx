@@ -7,10 +7,16 @@ import { updateStatus } from '../http/update-status'
 interface ActionButtonProps {
   id: string
   status: Status
+  type: 'register' | 'request'
   refetch: () => void
 }
 
-export function ChangeStatusButton({ id, status, refetch }: ActionButtonProps) {
+export function ChangeStatusButton({
+  id,
+  status,
+  type,
+  refetch,
+}: ActionButtonProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   if (status === 'ACCEPTED') {
@@ -28,7 +34,7 @@ export function ChangeStatusButton({ id, status, refetch }: ActionButtonProps) {
         />
         <PaperPlaneTilt
           onClick={async () => {
-            await updateStatus(id, 'SENT')
+            await updateStatus(id, type, 'SENT')
             refetch()
           }}
           className={`p-px  rounded transition-all duration-300 ${
@@ -71,7 +77,7 @@ export function ChangeStatusButton({ id, status, refetch }: ActionButtonProps) {
         />
         <Check
           onClick={async () => {
-            await updateStatus(id, 'ACCEPTED')
+            await updateStatus(id, type, 'ACCEPTED')
             refetch()
           }}
           className={`p-px text-green-500 hover:bg-slate-800 rounded transition-all duration-300 ${
@@ -81,7 +87,7 @@ export function ChangeStatusButton({ id, status, refetch }: ActionButtonProps) {
         />
         <X
           onClick={async () => {
-            await updateStatus(id, 'DENIED')
+            await updateStatus(id, type, 'DENIED')
             refetch()
           }}
           className={`p-px text-red-500 hover:bg-slate-800 rounded transition-all duration-300 ${

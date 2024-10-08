@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export function Header() {
   const menuItems = [
     { name: 'Solicitações', link: '/requests' },
-    { name: 'Inscrições', link: '/registrations' },
+    { name: 'Inscrições', link: '/registers' },
   ]
 
   return (
