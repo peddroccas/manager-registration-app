@@ -52,18 +52,26 @@ export function RegistersTable({ status }: RegisterTableProps) {
         }}
       >
         <TableHeader>
+          <TableColumn>PRIMEIRO NOME</TableColumn>
+          <TableColumn>ÚLTIMO NOME</TableColumn>
           <TableColumn>EMAIL</TableColumn>
-          <TableColumn>SIGLA</TableColumn>
+          <TableColumn align="center">SIGLA</TableColumn>
           <TableColumn>ENTIDADE</TableColumn>
+          <TableColumn>EMAIL DA ETIR</TableColumn>
+          <TableColumn align="center">TELEFONE DA ETIR</TableColumn>
           <TableColumn align="center">STATUS</TableColumn>
         </TableHeader>
         <TableBody>
           {data.map(register => {
             return (
               <TableRow key={register.id}>
+                <TableCell>{register.firstName}</TableCell>
+                <TableCell>{register.lastName}</TableCell>
                 <TableCell>{register.email}</TableCell>
                 <TableCell>{register.abbreviation}</TableCell>
                 <TableCell>{register.body}</TableCell>
+                <TableCell>{register.etirEmail}</TableCell>
+                <TableCell>{register.etirPhone}</TableCell>
                 <TableCell>
                   <div className="flex justify-center items-center">
                     <ChangeStatusButton

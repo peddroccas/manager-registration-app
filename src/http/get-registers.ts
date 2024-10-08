@@ -1,7 +1,7 @@
 import { api } from '../services/api'
-import type { request, Status } from '../types'
+import type { register, Status } from '../types'
 
-export async function getRegisters(status?: Status): Promise<request[]> {
+export async function getRegisters(status?: Status): Promise<register[]> {
   let url = '/registers'
   if (status) {
     url += `/${status}`
